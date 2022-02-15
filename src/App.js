@@ -9,7 +9,7 @@ export default function App() {
     register,
     handleSubmit,
     watch,
-    formState: { errors },
+    // formState: { errors },
   } = useForm();
   const onSubmit = (data) => console.log(data);
   let totalFeet = watch("totalFeet");
