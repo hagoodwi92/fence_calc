@@ -3,7 +3,7 @@ import "./App.css";
 import React from "react";
 import { useForm } from "react-hook-form";
 import FormControl from "@mui/material/FormControl";
-import "bootstrap/dist/css/bootstrap.min.css";
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import { Col, Row, Container } from "react-bootstrap";
 
 
