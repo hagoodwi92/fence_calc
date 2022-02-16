@@ -6,6 +6,14 @@ body {
   padding-bottom: 50px;
 }
 
+.row {
+  display: flex;
+}
+
+.column {
+  flex: 50%;
+}
+
 
 .App-logo {
   height: 40vmin;
