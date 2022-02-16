@@ -2,7 +2,10 @@ import logo from "./logo1.jpg";
 import "./App.css";
 import React from "react";
 import { useForm } from "react-hook-form";
-import FormControl from '@mui/material/FormControl';
+import FormControl from "@mui/material/FormControl";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Col, Row, Container } from "react-bootstrap";
+
 
 export default function App() {
   const {
@@ -61,37 +64,58 @@ export default function App() {
   let wPOK = Number(2 * cornerPost) + Number(endPost) + Number(gatePost);
 
   return (
-    <div className="App">
-      <img src={logo} className="App-logo" alt="logo" />
-      <h1>INFINITY EURO FENCING CALCULATOR</h1>
-      <br></br>
-      <h2>
+    <Container>
+      <div className="App">
+        <img src={logo} className="App-logo" alt="logo" />
+        <h1>Infinity Euro Fencing Calculator</h1>
+        <br></br>
+        {/* <h2>
         Post Hardware Kit: Determine the number of Post Hardware Kits required.
-      </h2>
-      {/* "handleSubmit" will validate your inputs before invoking "onSubmit" */}
-      <FormControl onSubmit={handleSubmit(onSubmit)}>
-        <h5>Enter Total Feet: </h5>
-        <input {...register("totalFeet", { required: true })} /> <br></br>
-        {/* register your input into the hook by invoking the "register" function */}
-        <h5>Enter # of Corner Posts needed: </h5>
-        <input {...register("cornerPost", { required: true })} /> <br></br>
-        {/* include validation with required or other standard HTML validation rules */}
-        <h5>Enter # of End Posts needed:</h5>
-        <input {...register("endPost", { required: true })} /> <br></br>
-        <h5>Enter # of Gate Posts needed:</h5>
-        <input {...register("gatePost", { required: true })} />
-        {/* errors will return when field validation fails  */}
-        {/* {errors.exampleRequired && <span>This field is required</span>}
+      </h2> */}
+        {/* "handleSubmit" will validate your inputs before invoking "onSubmit" */}
+        <Row>
+          <Col>
+            <FormControl onSubmit={handleSubmit(onSubmit)}>
+              <h5>Enter Total Feet: </h5>
+              <input {...register("totalFeet", { required: true })} /> <br></br>
+              {/* register your input into the hook by invoking the "register" function */}
+              <h5>Enter # of Corner Posts needed: </h5>
+              <input {...register("cornerPost", { required: true })} />{" "}
+              <br></br>
+              {/* include validation with required or other standard HTML validation rules */}
+              <h5>Enter # of End Posts needed:</h5>
+              <input {...register("endPost", { required: true })} /> <br></br>
+              <h5>Enter # of Gate Posts needed:</h5>
+              <input {...register("gatePost", { required: true })} />
+              {/* errors will return when field validation fails  */}
+              {/* {errors.exampleRequired && <span>This field is required</span>}
         <input type="submit" /> */}
-      </FormControl>
-      <h3>How Many Cartons Will You Need?</h3>
-      <ul>
-        <ul>Fence Framework: {wFF}</ul>
-        <ul>Post Hardware Kit: {wPOK}</ul>
-        <ul>Tension Wire: {wTW}</ul>
-        <ul>Fence Panels: {wFP}</ul>
-        <ul>Auto Close Gate:{wACG}</ul>
-      </ul>
-    </div>
+            </FormControl>
+          </Col>
+          <Col>
+            <h2>
+              <u>How Many Cartons Will You Need?</u>
+            </h2>
+            <ul>
+              <ul>
+                <h4>Fence Framework: {wFF}</h4>
+              </ul>
+              <ul>
+                <h4>Post Hardware Kit: {wPOK}</h4>
+              </ul>
+              <ul>
+                <h4>Tension Wire: {wTW}</h4>
+              </ul>
+              <ul>
+                <h4>Fence Panels: {wFP}</h4>
+              </ul>
+              <ul>
+                <h4>Auto Close Gate:{wACG}</h4>
+              </ul>
+            </ul>
+          </Col>
+        </Row>
+      </div>
+    </Container>
   );
 }
