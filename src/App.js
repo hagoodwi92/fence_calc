@@ -3,7 +3,17 @@ import "./App.css";
 import React from "react";
 import { useForm } from "react-hook-form";
 import FormControl from "@mui/material/FormControl";
-import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import {
+  Input,
+  InputLabel,
+  TableContainer,
+  Table,
+  TableHead,
+  TableRow,
+  TableCell,
+} from "@mui/material";
+import Paper from "@mui/material/Paper";
+import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import { Col, Row, Container } from "react-bootstrap";
 
 
@@ -23,6 +33,7 @@ export default function App() {
   let wTW = 0;
   let wFP = 0;
   let wACG = 0;
+  let wPOK = 0;
   // console.log(watch("totalFeet")); // watch input value by passing the name of it
   if (totalFeet >= 49 && totalFeet <= 72) {
     wFF = 3;
@@ -61,7 +72,7 @@ export default function App() {
     wACG = 1;
   }
 
-  let wPOK = Number(2 * cornerPost) + Number(endPost) + Number(gatePost);
+  wPOK = Number(2 * cornerPost) + Number(endPost) + Number(gatePost);
 
   return (
     <Container>
@@ -76,43 +87,44 @@ export default function App() {
         <Row>
           <Col>
             <FormControl onSubmit={handleSubmit(onSubmit)}>
-              <h5>Enter Total Feet: </h5>
-              <input {...register("totalFeet", { required: true })} /> <br></br>
-              {/* register your input into the hook by invoking the "register" function */}
-              <h5>Enter # of Corner Posts needed: </h5>
-              <input {...register("cornerPost", { required: true })} />{" "}
-              <br></br>
-              {/* include validation with required or other standard HTML validation rules */}
-              <h5>Enter # of End Posts needed:</h5>
-              <input {...register("endPost", { required: true })} /> <br></br>
-              <h5>Enter # of Gate Posts needed:</h5>
-              <input {...register("gatePost", { required: true })} />
-              {/* errors will return when field validation fails  */}
-              {/* {errors.exampleRequired && <span>This field is required</span>}
+              <FormControl>
+                <InputLabel>Total Length(ft): </InputLabel>
+                <Input {...register("totalFeet", { required: true })} />{" "}
+                <br></br>
+                {/* register your input into the hook by invoking the "register" function */}
+              </FormControl>
+              <FormControl>
+                <InputLabel># Corner Posts: </InputLabel>
+                <Input {...register("cornerPost", { required: true })} />{" "}
+                <br></br>
+                {/* include validation with required or other standard HTML validation rules */}
+              </FormControl>
+              <FormControl>
+                <InputLabel># End Posts:</InputLabel>
+                <Input {...register("endPost", { required: true })} /> <br></br>
+              </FormControl>
+              <FormControl>
+                <InputLabel># Gate Posts:</InputLabel>
+                <Input {...register("gatePost", { required: true })} />
+                {/* errors will return when field validation fails  */}
+                {/* {errors.exampleRequired && <span>This field is required</span>}
         <input type="submit" /> */}
+              </FormControl>
             </FormControl>
           </Col>
           <Col>
-            <h2>
-              <u>How Many Cartons Will You Need?</u>
-            </h2>
-            <ul>
-              <ul>
-                <h4>Fence Framework: {wFF}</h4>
-              </ul>
-              <ul>
-                <h4>Post Hardware Kit: {wPOK}</h4>
-              </ul>
-              <ul>
-                <h4>Tension Wire: {wTW}</h4>
-              </ul>
-              <ul>
-                <h4>Fence Panels: {wFP}</h4>
-              </ul>
-              <ul>
-                <h4>Auto Close Gate:{wACG}</h4>
-              </ul>
-            </ul>
+            <TableContainer component={Paper}>
+              <Table sx={{ minWidth: 650 }} aria-label="simple table">
+                <TableHead>How Many Cartons Will You Need?</TableHead>
+                <TableRow>
+                  <TableCell>Fence Framework: {wFF}</TableCell>
+                  <TableCell>Post Hardware Kit: {wPOK}</TableCell>
+                  <TableCell>Tension Wire: {wTW}</TableCell>
+                  <TableCell>Fence Panels: {wFP}</TableCell>
+                  <TableCell>Auto Close Gate:{wACG}</TableCell>
+                </TableRow>
+              </Table>
+            </TableContainer>
           </Col>
         </Row>
       </div>
